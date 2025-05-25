@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Black Clothings – Premium Black Apparel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Discover the latest in black fashion at Black Clothings. Find premium shirts, hoodies, and accessories. Shop now!">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #101010;
+      color: #fff;
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+    header {
+      background: #181818;
+      padding: 2em 1em 1.5em 1em;
+      text-align: center;
+      box-shadow: 0 4px 16px #0002;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+      letter-spacing: 2px;
+    }
+    header p {
+      color: #bdbdbd;
+      margin: 0.7em 0 0 0;
+      font-size: 1.2em;
+    }
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 2em 1em;
+    }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2em;
+      margin-bottom: 3em;
+    }
+    .product-card {
+      background: #181818;
+      padding: 1.5em 1em;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px #0003;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+    }
+    .product-card:hover {
+      transform: translateY(-5px) scale(1.025);
+      box-shadow: 0 12px 40px #0005;
+    }
+    .product-img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 1em;
+      background: #222;
+      border: 1px solid #262626;
+      transition: box-shadow 0.2s;
+    }
+    .product-title {
+      font-size: 1.2em;
+      font-weight: 700;
+      margin: 0.5em 0 0.2em 0;
+    }
+    .product-desc {
+      color: #bbb;
+      font-size: 0.97em;
+      margin-bottom: 1em;
+      text-align: center;
+    }
+    .product-price {
+      font-size: 1.13em;
+      font-weight: bold;
+      margin-bottom: 1em;
+      color: #ffdf6e;
+      letter-spacing: 1px;
+    }
+    .add-cart-btn {
+      background: linear-gradient(90deg, #ffdf6e 0%, #fff 80%);
+      color: #181818;
+      border: none;
+      padding: 0.7em 1.6em;
+      border-radius: 7px;
+      font-size: 1em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      margin-bottom: 0.4em;
+      outline: none;
+    }
+    .add-cart-btn:hover {
+      background: #ffe174;
+      color: #101010;
+    }
+    .cart-summary {
+      background: #1b1b1b;
+      padding: 2em 1.2em 1.2em 1.2em;
+      border-radius: 18px;
+      box-shadow: 0 2px 10px #0002;
+      margin-top: 2em;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+    .cart-summary h2 {
+      margin-top: 0;
+      font-size: 1.5em;
+      letter-spacing: 1px;
+    }
+    .cart-items-list {
+      color: #ccc;
+      margin: 1em 0;
+      font-size: 1.04em;
+      min-height: 2em;
+    }
+    .cart-remove {
+      background: none;
+      border: none;
+      color: #ff6e6e;
+      cursor: pointer;
+      font-size: 0.98em;
+      margin-left: 0.5em;
+    }
+    .checkout-btn {
+      display: inline-block;
+      background: linear-gradient(90deg, #6eafff 0%, #635bff 100%);
+      color: #fff;
+      padding: 1em 2.3em;
+      border-radius: 10px;
+      font-weight: 700;
+      text-decoration: none;
+      margin-top: 1.6em;
+      font-size: 1.15em;
+      box-shadow: 0 2px 12px #122a;
+      transition: background 0.2s, transform 0.15s;
+      border: none;
+      outline: none;
+      cursor: pointer;
+    }
+    .checkout-btn:active {
+      transform: scale(0.98);
+    }
+    .empty-cart {
+      color: #757575;
+      font-style: italic;
+      font-size: 1em;
+      padding: 1em 0;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.98em;
+      color: #555;
+      padding: 2em 1em 1.5em 1em;
+      letter-spacing: 1px;
+    }
+    @media (max-width: 600px) {
+      header { padding: 1.3em 0.5em; }
+      .products-grid { grid-template-columns: 1fr; }
+      .container { padding: 1em 0.4em; }
+      .cart-summary { padding: 1em 0.4em; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Black Clothings</h1>
+    <p>Premium black apparel. Shop the latest trends in minimalist style!</p>
+  </header>
+  <div class="container">
+    <h2 style="margin-top:0;margin-bottom:1.3em;">Featured Products</h2>
+    <div class="products-grid" id="products-grid">
+      <!-- Products rendered by JavaScript -->
+    </div>
+    <div class="cart-summary">
+      <h2>🛒 Your Cart</h2>
+      <div class="cart-items-list" id="cart-items-list">
+        <span class="empty-cart">Your cart is empty.</span>
+      </div>
+      <div><strong>Total: ₱<span id="cart-total">0</span></strong></div>
+      <button class="checkout-btn" onclick="checkout()" id="checkout-btn" style="display:none;">Checkout</button>
+    </div>
+  </div>
+  <div class="footer">
+    &copy; 2025 Black Clothings &ndash; All rights reserved.
+  </div>
+  <script>
+    // Product data – edit these to add products!
+    const products = [
+      {
+        id: 'shirt',
+        name: 'Classic Black T-Shirt',
+        desc: 'Soft cotton, unisex fit, timeless style.',
+        price: 499,
+        img: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=500&q=80',
+        stripe: 'https://buy.stripe.com/test_5kA4iMdYg7OZ8uQ000', // replace with your Stripe Payment Link!
+      },
+      {
+        id: 'hoodie',
+        name: 'Black Hoodie',
+        desc: 'Cozy fleece, kangaroo pocket, perfect for chill days.',
+        price: 1199,
+        img: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=500&q=80',
+        stripe: 'https://buy.stripe.com/test_dR686y6y8c8WbAA8wz', // replace with your Stripe Payment Link!
+      },
+      {
+        id: 'jeggings',
+        name: 'Black Jeggings',
+        desc: 'Stretch fit, high waist, pairs with everything.',
+        price: 899,
+        img: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=500&q=80',
+        stripe: 'https://buy.stripe.com/test_4gw9Ck5Gk1cK8uQ4gh', // replace with your Stripe Payment Link!
+      },
+      {
+        id: 'cap',
+        name: 'Black Cap',
+        desc: 'Adjustable strap, sun protection, sleek look.',
+        price: 299,
+        img: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=500&q=80',
+        stripe: 'https://buy.stripe.com/test_eVa2bA1Yk2cK8uQeV1', // replace with your Stripe Payment Link!
+      }
+    ];
+    // Cart logic
+    let cart = [];
+    function addToCart(id) {
+      const prod = products.find(p => p.id === id);
+      const found = cart.find(item => item.id === id);
+      if (found) { found.qty += 1; }
+      else { cart.push({ ...prod, qty: 1 }); }
+      renderCart();
+    }
+    function removeFromCart(id) {
+      cart = cart.filter(item => item.id !== id);
+      renderCart();
+    }
+    function renderProducts() {
+      document.getElementById('products-grid').innerHTML = products.map(product => `
+        <div class="product-card">
+          <img class="product-img" src="${product.img}" alt="${product.name}">
+          <div class="product-title">${product.name}</div>
+          <div class="product-desc">${product.desc}</div>
+          <div class="product-price">₱${product.price}</div>
+          <button class="add-cart-btn" onclick="addToCart('${product.id}')">Add to Cart</button>
+          <a href="${product.stripe}" target="_blank" class="checkout-btn" style="margin-top:0.5em;font-size:0.98em;padding:0.5em 1.2em;background:#222;background:linear-gradient(90deg,#ffdf6e 0%,#fff 80%);color:#181818;">Buy Now</a>
+        </div>
+      `).join('');
+    }
+    function renderCart() {
+      const cartList = document.getElementById('cart-items-list');
+      const checkoutBtn = document.getElementById('checkout-btn');
+      if (cart.length === 0) {
+        cartList.innerHTML = '<span class="empty-cart">Your cart is empty.</span>';
+        checkoutBtn.style.display = 'none';
+      } else {
+        cartList.innerHTML = cart.map(item =>
+          `${item.qty} × <b>${item.name}</b> <span style="color:#ffe174;">₱${item.price * item.qty}</span>
+          <button class="cart-remove" onclick="removeFromCart('${item.id}')">Remove</button>`
+        ).join('<br>');
+        checkoutBtn.style.display = '';
+      }
+      const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+      document.getElementById('cart-total').textContent = total;
+    }
+    // Stripe checkout for the entire cart (simple version: goes to first product's payment link)
+    function checkout() {
+      if (cart.length > 0) {
+        // For static sites: redirect to the Stripe link of the first item in the cart
+        // For a real cart, you’d need a backend to dynamically create a Stripe Checkout session!
+        window.open(cart[0].stripe, '_blank');
+      }
+    }
+    renderProducts();
+    renderCart();
+  </script>
+</body>
+  </html>
